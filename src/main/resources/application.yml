@@ -1,0 +1,27 @@
+spring:
+  application:
+    name: jobtrack-api
+  datasource:
+    url: ${DATABASE_URL:jdbc:postgresql://localhost:5432/jobtrack}
+    username: ${DATABASE_USERNAME:jobtrack}
+    password: ${DATABASE_PASSWORD:jobtrack-local}
+  jpa:
+    open-in-view: false
+    hibernate:
+      ddl-auto: validate
+  flyway:
+    enabled: true
+  data:
+    web:
+      pageable:
+        max-page-size: 100
+  jackson:
+    default-property-inclusion: non_null
+server:
+  port: ${SERVER_PORT:8080}
+  address: ${SERVER_ADDRESS:127.0.0.1}
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info
